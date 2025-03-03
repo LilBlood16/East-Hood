@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- for preview  -->
+    <meta property="og:image" content="https://iili.io/ZrCCkx.jpg" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://yatoconfession.netlify.app/" />
+    <meta property="og:title" content="Yato Confession" />
+    <meta property="og:description" content="An anonymous confession site made for everyone" />
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lilx Confession</title>
+    <link rel="stylesheet" href="./style/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="./asset/profile-red.ico">
+    <script src="./script/confession.js" defer></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" defer></script>
+    <script src="./script/cloudinary.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a class="home" href="#">Home</a>
+                <!-- <div class="search">
+                    <a href="#">
+                        <img src="./asset/searchs.png" width="25px" height="25px" alt="image">
+                    </a>
+                    <input class="input-search" type="text" placeholder="Search confession"> </input>
+                </div> -->
+            </nav>
+        </div>
+    </header>
+    <section>
+        <div class="container">
+            <div class="top-logo">
+                <img class="hub-logo" src="./asset/profile-white.png" alt="Logo">
+                <!-- <img class="hub-logo" alt="Logo"> -->
+                <span>Lilx Confession</span>
+            </div>
+            <div class="content" id="home">
+                <div class="post-write" id="post-write">
+                    <div class="profile">
+                        <img class="prof-logo" src="./asset/profile-pink.png" alt="profile">
+                        <!-- <img class="prof-logo" alt="Logo"> -->
+                        <span class="imposter">Impostor Message</span>
+                    </div>
+                    <div class="write-content">
+                        <form>
+                            <textarea oninput=auto_grow(this) class="text-box" id="confess-box"
+                                placeholder="Write your confession here"></textarea>
+                        </form>
+                    </div>
+                    <div class="post-img" id="post-img">
+                        <div class="progress-bar" id="progress-bar">
+                            <div class="progress" id="progress"></div>
+                        </div>
+                        <span class="upload-warn" id="upload-warn" style="display: none;">We only accept image and gif!!
+                            ☹️</span>
+                        <img class="remove-img" id="remove-upload" onclick=removeImg() src="./asset/minuss.png"
+                            style="display: none;">
+                        <img class=" img-content" id="img-content" alt="Image""
+                            style=" display: none;">
+                        <!-- <video class="vid-content" id="vid-content" alt="Video" style="display: none;"></video> -->
+                    </div>
+                    <div class="write-submit">
+                        <div class="write-add-on">
+                            <input type="file" id="fileElem" accept="image/*" style="display:none"
+                                onchange="handleFiles(this.files)">
+                            <img class="add-on fileSelect" id="fileSelect" src="./asset/image.png" alt="image">
+                            <!-- <img class="add-on" src="./asset/gif.png" alt="image"> -->
+                            <!-- <img class="add-on" src="./asset/emoji.png" alt="image"> -->
+                        </div>
+                        <button type="submit" class="write-btn btn btn-light" onclick=confess()>Confess</button>
+                    </div>
+                </div>
+                <div class="post-container">
+                    <div class="post-box">
+                        <div class="profile">
+                            <img src="./asset/profile-black.png" alt="profile">
+                            <span class="imposter">MADE BY</span>
+                            <span class="imposter profile-id">LILX CUTE</span>
+                            <span class="imposter dot">•</span>
+                            <span class="imposter post-time">LIFETIME</span>
+                        </div>
+                        <div class="post-content" id="LILX CUTE">
+                            <div class="div-post-text">
+                                <span class="post-text">MADE BY LILX CUTE</span>
+                            </div>
+                            <img class="post-image" src="./asset/quote.jpg" alt="image">
+                            <div class="reaction">
+                                <div class="sus reaction-align">
+                                    <img src="./asset/sus.png" alt="reaction">
+                                    <span class="sus-reaction" id="upvote#${postData[i].impostorId}">94234</span>
+                                </div>
+                                <div class="downvote reaction-align">
+                                    <img src="./asset/voted.png" alt="reaction">
+                                    <span class="vote-reaction" id="upvote#${postData[i].impostorId}">96652</span>
+                                </div>
+                                <div class="comment reaction-align">
+                                    <span class="comment-btn">0 Comment</span>
+                                </div>
+                                <div class="report reaction-align">
+                                    <img src="./asset/report.png" alt="reaction">
+                                    <span class="report-reaction" id="upvote#${postData[i].impostorId}">94734</span>
+                                </div>
+                            </div>
+                            <div class="comment-area">
+                                <form class="comment-form">
+                                    <textarea oninput=auto_grow(this) class="comment-text"
+                                        placeholder="Write a public comment..." id="content#0"></textarea>
+                                </form>
+                                <img onclick=sendCmt(id) id="send#0" class="send" src="./asset/send.png" alt="send">
+                            </div>
+                            <div class="commented" id="cmt#0">
+                                <div class="cmt-text" id="cmted#1">
+                                    <img src="./asset/profile-pink.png" alt="profile">
+                                    <span> POGI TALAGA NI LILX
+                                    </span>
+                                </div>
+                                <div class="cmt-text" id="cmted#2">
+                                    <img src="./asset/profile-green.png" alt="profile">
+                                    <span> HEHEHEHE
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="viewmore">
+                                <span>View more....</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
