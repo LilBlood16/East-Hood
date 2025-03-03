@@ -18,7 +18,7 @@ window.onload = async function () {
 }
 
 function fetchData() {
-    return fetch('https://lilxconfession.netlify.app/.netlify/functions/api/post/all').then((res) => {
+    return fetch('https://yatoconfessionapi77.netlify.app/.netlify/functions/api/post/all').then((res) => {
         return res.json()
     }).then((data) => {
         return data
